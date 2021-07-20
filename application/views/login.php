@@ -2,7 +2,7 @@
 <html lang="id" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Nasi Tumpeng Resto</title>
   </head>
   <body>
     <?php echo form_open("Login/login_check") ?>
@@ -18,6 +18,7 @@
               }
             ?>
       <tr>
+      <br>
         <td>NIK</td>
         <td>
           <input type="text" name="id_pegawai" value="" placeholder="ID Pegawai" autofocus>
@@ -26,7 +27,7 @@
       <tr>
         <td>Password</td>
         <td>
-          <input type="password" name="password" value="" placeholder="Password">
+          <input type="password" name="password" value="" placeholder="Password" required>
         </td>
       </tr>
       <tr>
