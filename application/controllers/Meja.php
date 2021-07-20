@@ -12,4 +12,11 @@ class Meja extends CI_Controller
         $get['data'] = $this->meja_model->data();
         $this->load->view('meja', $get);
     }
+    public function ubah_meja()
+    {
+        $bowl[status] = $this->input->post('status');
+        $bowl[no_meja] = $this->input->post('no_meja');
+        $this->meja_model->update($bowl);
+        redirect('meja/index');
+    }
 }

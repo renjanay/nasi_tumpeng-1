@@ -22,20 +22,74 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url(); ?>/meja">Meja</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url(); ?>/pesanan">Pesanan</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pembayaran</a>
+      </li>
     </ul>
+    <?php echo $this->session->userdata('nama_pegawai') ?>
+    -
+    <?php echo $this->session->userdata('jabatan') ?>
+    <?php echo form_open("login/logout") ?>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+    <?php echo form_close() ?>
   </div>
 </nav>
     List Menu
     <table>
+      <tr>
+        <td>nama menu</td>
+        <td>harga</td>
+        <td>stok</td>
+        <td>aksi</td>
+      </tr>
       <?php foreach ($data as $value): ?>
         <tr>
           <td><?php echo $value->nama_menu ?></td>
+          <td><?php echo $value->harga_menu ?></td>
+          <td><?php echo $value->stok_menu ?></td>
+          <td>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalStok<?php echo $value->kd_menu ?>">
+              Ubah Stok
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalStok<?php echo $value->kd_menu ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <?php $hid = array('kd_menu' => $value->kd_menu);
+                  echo form_open('menu/ubah_stok', '', $hid); ?>
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"><?php echo $value->nama_menu ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  <div class="form-group">
+                    <label for="nama-pelanggan" class="col-form-label">Stok saat ini :</label>
+                    <input type="text" class="form-control" value="<?php echo $value->stok_menu ?>" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label for="nama-pelanggan" class="col-form-label">Ubah stok menjadi :</label>
+                    <input type="text" class="form-control" id="stok-menu" name="stok_menu">
+                  </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Ubah</button>
+                  </div>
+                  <?php echo form_close(); ?>
+                </div>
+              </div>
+            </div>
+          </td>
         </tr>
       <?php endforeach; ?>
     </table>
     <br>
-    <?php if ($this->session->userdata('jabatan')=='Pelayan'): ?>
-
-    <?php endif; ?>
   </body>
 </html>

@@ -12,11 +12,11 @@ class Menu extends CI_Controller
         $get['data'] = $this->menu_model->data();
         $this->load->view('menu', $get);
     }
-    public function tambah_menu()
+    public function ubah_stok()
     {
-        $no = $this->input->get('no');
-        $status = $this->input->get('status');
-        echo $no;
-        echo $status;
+        $bowl['kd_menu'] = $this->input->post('kd_menu');
+        $bowl['stok_menu'] = $this->input->post('stok_menu');
+        $this->menu_model->update($bowl);
+        redirect('menu/index');
     }
 }

@@ -16,13 +16,25 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url(); ?>/menu">Menu</a>
+      </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Menu <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Meja <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Meja</a>
+        <a class="nav-link" href="<?php echo site_url(); ?>/pesanan">Pesanan</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pembayaran</a>
       </li>
     </ul>
+    <?php echo $this->session->userdata('nama_pegawai') ?>
+    -
+    <?php echo $this->session->userdata('jabatan') ?>
+    <?php echo form_open("login/logout") ?>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+    <?php echo form_close() ?>
   </div>
 </nav>
     List Meja
@@ -38,45 +50,46 @@
           <td><?php echo $value->status ?></td>
           <td>
             <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMeja<?php echo $value->no_meja ?>">
-  Pilih
-</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMeja<?php echo $value->no_meja ?>">
+              Ubah status
+            </button>
 
-<!-- Modal -->
-<div class="modal fade" id="modalMeja<?php echo $value->no_meja ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <?php $hid = array('no_meja' => $value->no_meja);
-      echo form_open('meja/isi_meja', '', $hid); ?>
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Meja <?php echo $value->no_meja ?></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <?php if ($value->status == "Kosong"):?>
-          <div class="form-group">
-            <label for="nama-pelanggan" class="col-form-label">Nama Pelanggan:</label>
-            <input type="text" class="form-control" id="nama-pelanggan" name="nama_pelanggan">
-          </div>
-        <?php endif; ?>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-      <?php echo form_close(); ?>
-    </div>
-  </div>
-</div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalMeja<?php echo $value->no_meja ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <?php $hid = array('no_meja' => $value->no_meja);
+                  echo form_open('meja/ubah_meja', '', $hid); ?>
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Meja <?php echo $value->no_meja ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="form-group">
+                        <label class="col-form-label">Ubah status meja menjadi</label>
+                        <?php if ($value->status == "Kosong") {?>
+                          <label class="col-form-label">Terisi</label>
+                          <input type="hidden" name="status" value="Terisi">
+                        <?php } elseif ($value->status == "Terisi") {?>
+                          <label class="col-form-label">Kosong</label>
+                          <input type="hidden" name="status" value="Kosong">
+                        <?php } ?>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Ubah</button>
+                  </div>
+                  <?php echo form_close(); ?>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
       <?php endforeach; ?>
     </table>
     <br>
-    <?php if ($this->session->userdata('jabatan')=='Pelayan'): ?>
-
-    <?php endif; ?>
   </body>
 </html>

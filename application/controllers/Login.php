@@ -22,18 +22,25 @@ class Login extends CI_Controller
                 // var_dump($value);
                 $valuedata['logged_in'] = 'Sudah login';
                 $valuedata['id_pegawai'] = $value->id_pegawai;
+                $valuedata['nama_pegawai'] = $value->nama_pegawai;
                 $valuedata['jabatan'] = $value->jabatan;
                 $this->session->set_userdata($valuedata);
             }
-            if ($this->session->userdata('jabatan')=='Pelayan') {
-                echo "Pelayan";
-            } elseif ($this->session->userdata('jabatan')=='Koki') {
-                echo "Koki";
-            } elseif ($this->session->userdata('jabatan')=='Kasir') {
-                echo "Kasir";
-            }
+            // if ($this->session->userdata('jabatan')=='Pelayan') {
+            //     echo "Pelayan";
+            // } elseif ($this->session->userdata('jabatan')=='Koki') {
+            //     echo "Koki";
+            // } elseif ($this->session->userdata('jabatan')=='Kasir') {
+            //     echo "Kasir";
+            // }
+            redirect('menu');
         } else {
             echo "Login Failed";
         }
+    }
+    public function logout()
+    {
+        session_destroy();
+        redirect('login');
     }
 }
