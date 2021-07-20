@@ -7,6 +7,16 @@
   <body>
     <?php echo form_open("Login/login_check") ?>
     <table align="center">
+    <h2 class="form-signin-heading">Nasi Tumpeng App</h2>
+    <?php
+              // untuk menampilkan informasi login
+              if(isset($login_info))
+              {
+                 echo "<font color='#ff0000';>";
+                 echo $login_info;
+                 echo '</font>';
+              }
+            ?>
       <tr>
         <td>NIK</td>
         <td>
