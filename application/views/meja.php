@@ -20,16 +20,57 @@
         <a class="nav-link" href="#">Menu <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url(); ?>/meja">Meja</a>
+        <a class="nav-link" href="#">Meja</a>
       </li>
     </ul>
   </div>
 </nav>
-    List Menu
+    List Meja
     <table>
+      <tr>
+        <td>No Meja</td>
+        <td>Status</td>
+        <td>Aksi</td>
+      </tr>
       <?php foreach ($data as $value): ?>
         <tr>
-          <td><?php echo $value->nama_menu ?></td>
+          <td><?php echo $value->no_meja ?></td>
+          <td><?php echo $value->status ?></td>
+          <td>
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMeja<?php echo $value->no_meja ?>">
+  Pilih
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalMeja<?php echo $value->no_meja ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <?php $hid = array('no_meja' => $value->no_meja);
+      echo form_open('meja/isi_meja', '', $hid); ?>
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Meja <?php echo $value->no_meja ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php if ($value->status == "Kosong"):?>
+          <div class="form-group">
+            <label for="nama-pelanggan" class="col-form-label">Nama Pelanggan:</label>
+            <input type="text" class="form-control" id="nama-pelanggan" name="nama_pelanggan">
+          </div>
+        <?php endif; ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+      <?php echo form_close(); ?>
+    </div>
+  </div>
+</div>
+          </td>
         </tr>
       <?php endforeach; ?>
     </table>

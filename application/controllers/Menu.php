@@ -12,4 +12,11 @@ class Menu extends CI_Controller
         $get['data'] = $this->menu_model->data();
         $this->load->view('menu', $get);
     }
+    public function tambah_menu()
+    {
+        $no = $this->input->get('no');
+        $status = $this->input->get('status');
+        echo $no;
+        echo $status;
+    }
 }
