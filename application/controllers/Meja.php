@@ -14,8 +14,8 @@ class Meja extends CI_Controller
     }
     public function ubah_meja()
     {
-        $bowl[status] = $this->input->post('status');
-        $bowl[no_meja] = $this->input->post('no_meja');
+        $bowl['status'] = $this->input->post('status');
+        $bowl['no_meja'] = $this->input->post('no_meja');
         $this->meja_model->update($bowl);
         redirect('meja/index');
     }
