@@ -5,10 +5,10 @@
     <title></title>
   </head>
   <body>
-    <?php echo form_open("Login/login_check") ?>
+    <?php echo form_open("login/login_check") ?>
     <table align="center">
       <tr>
-        <td>NIK</td>
+        <td>ID Pegawai</td>
         <td>
           <input type="text" name="id_pegawai" value="" placeholder="ID Pegawai" autofocus>
         </td>
