@@ -23,7 +23,7 @@
             <a class="nav-link" href="<?php echo site_url(); ?>/meja">Meja</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Pesanan  <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="<?php echo site_url(); ?>/pesanan">Pesanan  <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pembayaran</a>
@@ -53,7 +53,13 @@
           <td><?php echo $value->nama_menu ?></td>
           <td><?php echo $value->harga_menu ?></td>
           <td><?php echo $value->stok_menu ?></td>
-          <td><a class="btn btn-primary" href="<?php echo base_url() ?>index.php/pesanan/view_pilih_menu?kd=<?php echo $value->kd_menu?>" role="button">Pilih</a></td>
+          <?php
+          if (isset($id)) {?>
+            <td><a class="btn btn-primary" href="<?php echo base_url() ?>index.php/pesanan/view_pilih_menu?kd=<?php echo $value->kd_menu?>&id=<?php echo $id ?>" role="button">Pilih</a></td>
+          <?php } else {?>
+            <td><a class="btn btn-primary" href="<?php echo base_url() ?>index.php/pesanan/view_pilih_menu?kd=<?php echo $value->kd_menu?>" role="button">Pilih</a></td>
+          <?php }
+          ?>
         </tr>
       <?php endforeach; ?>
     </table>

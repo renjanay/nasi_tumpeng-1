@@ -37,7 +37,7 @@
     <?php echo form_close() ?>
   </div>
 </nav>
-  <a class="btn btn-primary" href="<?php echo base_url() ?>index.php/pesanan/view_tambah_pesanan" role="button">Tambah Pesanan Baru</a>
+  <a class="btn btn-primary" href="<?php echo site_url() ?>/pesanan/view_tambah_pesanan" role="button">Tambah Pesanan Baru</a>
     <div id="accordion">
       <?php foreach ($data as $value): ?>
           <div class="card">
@@ -65,6 +65,10 @@
                   endforeach;
                     $x--;
                    ?>
+                   <a class="btn btn-primary" href="<?php echo site_url() ?>/pesanan/view_tambah_pesanan?id=<?php echo $value->id_pesanan?>" role="button">Tambah pesanan</a>
+                   <a class="btn btn-primary" href="<?php echo site_url() ?>/pesanan/#" role="button">Ubah pesanan</a>
+                   <a class="btn btn-primary" href="<?php echo site_url() ?>/pesanan/#" role="button">Hapus pesanan</a>
+                   <a class="btn btn-primary" href="<?php echo site_url() ?>/pesanan/#" role="button">Selesaikan pesanan</a>
                 </table>
               </div>
             </div>

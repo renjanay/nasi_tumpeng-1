@@ -23,7 +23,7 @@
             <a class="nav-link" href="<?php echo site_url(); ?>/meja">Meja</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Pesanan  <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="<?php echo site_url(); ?>/pesanan">Pesanan  <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pembayaran</a>
@@ -44,7 +44,7 @@
       <input type="hidden" name="id_pegawai" value="<?php echo $this->session->userdata('id_pegawai')?>">
 
       Nama menu :
-      <?php echo $value->kd_menu ?>
+      <?php echo $value->nama_menu ?>
       <br>
       Harga :
       <?php echo $value->harga_menu ?>
@@ -58,17 +58,20 @@
       <br>
     <?php endforeach; ?>
     <br><br>
-
-    Nomor meja :
-    <select name="meja">
-      <?php foreach ($meja as $no): ?>
-        <option value="<?php echo $no->no_meja ?>"><?php echo $no->no_meja ?></option>
-      <?php endforeach; ?>
-    </select>
-    <br>
-    Nama pelanggan :
-    <br>
-    <input type="text" name="nama_pelanggan" placeholder="nama pelanggan">
+    <?php if (null == $this->input->get('id')) { ?>
+      Nomor meja :
+      <select name="meja">
+        <?php foreach ($meja as $no): ?>
+          <option value="<?php echo $no->no_meja ?>"><?php echo $no->no_meja ?></option>
+        <?php endforeach; ?>
+      </select>
+      <br>
+      Nama pelanggan :
+      <br>
+      <input type="text" name="nama_pelanggan" placeholder="nama pelanggan">
+    <?php } else {?>
+      <input type="hidden" name="id_pesanan" value="<?php echo $this->input->get('id') ?>">
+    <?php } ?>
     <br>
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">submit</button>
   </form>
