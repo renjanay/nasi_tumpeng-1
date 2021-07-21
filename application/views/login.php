@@ -5,33 +5,29 @@
     <title>Nasi Tumpeng Resto</title>
   </head>
   <body>
-    <?php echo form_open("Login/login_check") ?>
+  <div class="container">
+      <div id="form-middle">
+      <form method="POST" class="form-signin" action=""><?php echo form_open("Login/login_check") ?>
     <table align="center">
-    <h2 class="form-signin-heading">Nasi Tumpeng App</h2>
-    <?php
-              // untuk menampilkan informasi login
-              if(isset($login_info))
-              {
-                 echo "<font color='#ff0000';>";
-                 echo $login_info;
-                 echo '</font>';
-              }
-            ?>
-      <tr>
+      <center>
+    <h2 class="form-signin-heading">Login</h2>
+      </center>
       <br>
-        <td>NIK</td>
+      <tr>
         <td>
+          <label for="id_pegawai" class="sr-only">ID Pegawai &nbsp;</label>
           <input type="text" name="id_pegawai" value="" placeholder="ID Pegawai" autofocus>
         </td>
       </tr>
       <tr>
-        <td>Password</td>
         <td>
+          <label for="password" class="sr-only">Password &nbsp; &nbsp; &nbsp;</label>
           <input type="password" name="password" value="" placeholder="Password" required>
         </td>
       </tr>
       <tr>
-        <td colspan="2"><input type="submit" name="submit" value="Log In" ></td>
+        <td>
+      <button input type="submit" name="submit" value="Log In" >Log In</button>
       </tr>
     </table>
   </body>
