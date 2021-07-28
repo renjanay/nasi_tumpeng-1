@@ -1,4 +1,8 @@
-body{
-	background: yellowgreen;
-	color: black;
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+.bgwarna {
+	background-color: yellowgreen;
 }
