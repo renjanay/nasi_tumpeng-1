@@ -25,7 +25,7 @@
             <?php echo form_open("login/login_check") ?>
             <div class="col-md-12">
               <div class="form-group">
-                <input type="text" class="form-control" name= "id_pegawai" placeholder="Id Pegawai">
+                <input type="text" class="form-control" name= "id_pegawai" placeholder="ID Pegawai">
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" name="password" placeholder="Password">
